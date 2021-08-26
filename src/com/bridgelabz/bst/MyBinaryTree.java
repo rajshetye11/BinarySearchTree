@@ -44,5 +44,25 @@ public class MyBinaryTree <K extends Comparable<K>>{
 			getTreeNodes(root.right);
 		}
 	}
+	
+	private boolean search(MyBinaryNode<K>root, K key) {
+		if(root == null)
+			return false;
+		int compareKey = key.compareTo(root.key);
+		if (compareKey == 0) 
+			return true;
+		if(compareKey < 0 )
+			return search(root.left,key);
+		else
+			return search(root.right, key);
+	}
+	
+	public void searchNode(K key) {
+		if(this.search(root, key)) {
+			System.out.println(key+" Key Found");
+		}else {
+			System.out.println(key+" Key Not Found");
+		}
+	}
 
 }
